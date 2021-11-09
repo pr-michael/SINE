@@ -1,8 +1,6 @@
 #include "raylib.h"
 #include "math.h"
 
-#define PI 3.1415926
-
 void drawSine(int screenHeight, int screenWidth, double amplitude, double freq, double cnt);
 
 int main()
@@ -16,7 +14,7 @@ int main()
     double amplitude = (screenHeight / 2.f) - 40;
     double freq = 1.f / (screenWidth * 0.25);
 
-    InitWindow(screenWidth, screenHeight, "raylib");
+    InitWindow(screenWidth, screenHeight, "sine");
     SetTargetFPS(60);
     //--------------------------------------------------------------------------------------
 
@@ -51,6 +49,14 @@ int main()
         if (IsKeyDown(KEY_LEFT))
         {
             speed -= 0.1;
+        }
+        if (IsKeyDown(KEY_UP))
+        {
+            amplitude += 1;
+        }
+        if (IsKeyDown(KEY_DOWN))
+        {
+            amplitude -= 1;
         }
         cnt = (cnt + speed * GetFrameTime());
         //----------------------------------------------------------------------------------
